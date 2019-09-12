@@ -61,4 +61,53 @@ public class Main
 
     } //main(String[] args)
 
+    static void typeToConvertTo(Scanner s)
+    {
+        System.out.print("Please enter 'B' to convert to Binary or 'D' to convert to Denary: ");
+        String convType = s.nextLine().toLowerCase();
+        
+        do
+        {
+            if (convType.equals("b"))
+            {
+                do
+                {
+                System.out.print("Please enter a number up to 255 to convert to binary: ");
+                while (!s.hasNextInt())
+                {
+                    System.out.println("Please enter a valid number.");
+                    s.next();
+                }
+                int input = s.nextInt();
+
+                }
+                while (input > 255);
+                
+                toBinary(input);
+
+            } //if(converting to binary)
+            else if (convType.equals("d"))
+            {
+                do
+                {
+                System.out.print("Please enter a number up to 11111111 to convert to denary: ");
+                while (!s.hasNextInt())
+                {
+                    System.out.println("Please enter a valid number.");
+                    s.next();
+                }
+                int input = s.nextInt();
+
+                }
+                while (input > 11111111);
+                
+                toDenary(input);
+
+            } //else if(converting to denary)
+
+        }
+        while (!convType.equals("b") && !convType.equals("d"));
+
+    } //typeToConvertTo(Scanner s)
+
 } //Main
