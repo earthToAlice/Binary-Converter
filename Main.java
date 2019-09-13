@@ -13,12 +13,14 @@ public class Main
     {
         Scanner s = new Scanner(System.in);
 
-        typeToConvertTo(s);
+        char convType = typeToConvertTo(s);
 
     } //main(String[] args)
 
-    static void typeToConvertTo(Scanner s)
+    static char typeToConvertTo(Scanner s)
     {
+        String convType = "";
+
         do
         {
             System.out.print("Please enter 'B' to convert to Binary or 'D' to convert to Denary: ");
@@ -28,49 +30,50 @@ public class Main
                 System.out.println("Please enter a valid letter.");
             }
 
-            String convType = s.nextLine().toLowerCase();
+            convType = s.nextLine().toLowerCase();
 
         }
         while (!convType.equals("b") && !convType.equals("d"));
-        
-        
-        if (convType.equals("b"))
-        {
-            do
-            {
-            System.out.print("Please enter a number up to 255 to convert to binary: ");
-            while (!s.hasNextInt())
-            {
-                System.out.println("Please enter a valid number.");
-                s.next();
-            }
-            int input = s.nextInt();
 
-            }
-            while (input > 255);
-            
-            toBinary(input);
-
-        } //if(converting to binary)
-        else if (convType.equals("d"))
-        {
-            do
-            {
-            System.out.print("Please enter a number up to 11111111 to convert to denary: ");
-            while (!s.hasNextInt())
-            {
-                System.out.println("Please enter a valid number.");
-                s.next();
-            }
-            int input = s.nextInt();
-
-            }
-            while (input > 11111111);
-            
-            toDenary(input);
-
-        } //else if(converting to denary)
+        return convType;
 
     } //typeToConvertTo(Scanner s)
+
+    static void convPrompt(char convType)
+    {
+        int MAX_NUM;
+        String CONV_TYPE;
+
+        switch (convType)
+        {
+            case 'b':
+                MAX_NUM = 255;
+                CONV_TYPE = "binary";
+                break;
+            
+            case 'd':
+                MAX_NUM = 11111111;
+                CONV_TYPE = "denary";
+                break;
+
+            default:
+                MAX_NUM = 0;
+                CONV_TYPE = "";
+        }
+
+        do
+        {
+            System.out.printf("Please enter a number up to %i to convert to %s: ", MAX_NUM, CONV_TYPE);
+            while (!s.hasNextInt())
+            {
+                System.out.println("Please enter a valid number.");
+                s.next();
+            }
+            int input = s.nextInt();
+
+        } //do while(invalid input)
+        while (input > MAX_NUM);
+
+    } //convPrompt(char convType)
 
 } //Main
