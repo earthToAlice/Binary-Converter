@@ -13,17 +13,18 @@ public class Main
     {
         Scanner s = new Scanner(System.in);
 
-        char convType = typeToConvertTo(s);
+        String convType = typeToConvertTo(s);
+        int input = convPrompt(s, convType);
 
     } //main(String[] args)
 
-    static char typeToConvertTo(Scanner s)
+    static String typeToConvertTo(Scanner s)
     {
         String convType = "";
 
         do
         {
-            System.out.print("Please enter 'B' to convert to Binary or 'D' to convert to Denary: ");
+            System.out.print("Please enter 'B' to convert to Binary or 'D' to convert to Denary:\n");
 
             while (!s.hasNextLine())
             {
@@ -39,37 +40,42 @@ public class Main
 
     } //typeToConvertTo(Scanner s)
 
-    static void convPrompt(char convType)
+    static int convPrompt(Scanner s, String convType)
     {
+        int input;
         int MAX_NUM;
+        String IN_TYPE;
         String CONV_TYPE;
 
         switch (convType)
         {
-            case 'b':
+            case "b":
                 MAX_NUM = 255;
                 CONV_TYPE = "binary";
+                IN_TYPE = "denary";
                 break;
             
-            case 'd':
+            case "d":
                 MAX_NUM = 11111111;
                 CONV_TYPE = "denary";
+                IN_TYPE = "binary";
                 break;
 
             default:
                 MAX_NUM = 0;
                 CONV_TYPE = "";
-        }
-
+                IN_TYPE = "";
+        } //switch(convType)
+        
         do
         {
-            System.out.printf("Please enter a number up to %i to convert to %s: ", MAX_NUM, CONV_TYPE);
+            System.out.printf("Please enter a %s number up to %d to convert to %s:\n", IN_TYPE, MAX_NUM, CONV_TYPE);
             while (!s.hasNextInt())
             {
                 System.out.println("Please enter a valid number.");
                 s.next();
             }
-            int input = s.nextInt();
+            input = s.nextInt();
 
         } //do while(invalid input)
         while (input > MAX_NUM);
