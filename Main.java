@@ -15,6 +15,7 @@ public class Main
 
         String convType = typeToConvertTo(s);
         int input = convPrompt(s, convType);
+        System.out.println(input);
 
     } //main(String[] args)
 
@@ -76,13 +77,15 @@ public class Main
         } //do while (invalid binary num);
         while(IN_TYPE.equals("binary") && !validBinary(input));
 
+        return input;
+
     } //convPrompt(char convType)
 
     static boolean validBinary(int in)
     {
-        for (int i = 0; i < Integer.toString(in).length; i++)
+        for (int i = 0; i < Integer.toString(in).length(); i++)
         {
-            if (((in / i) != 0) || ((in / i) != 1)) return false;
+            if (((in / ((i+1) * 10)) != 0) && ((in / ((i+1) * 10)) != 1)) return false;
 
         } //for(i)
 
