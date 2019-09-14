@@ -89,7 +89,6 @@ public class Main
 
         for (int i = Integer.toString(in).length() - 1; i >= 0; i--)
         {
-            System.out.println(input % 10);
             if ((input % 10 != 0) && (input % 10 != 1)) return false;
             input /= 10;
 
@@ -118,7 +117,7 @@ public class Main
 
             input /= 2;
 
-        }
+        } //while(input >= 1)
         
         return result;
     
@@ -127,10 +126,17 @@ public class Main
     static String toDenary(int in)
     {
         int result = 0;
+        int input = in;
         
+        for (int i = 0; i < Integer.toString(in).length(); i++)
+        {
+            if (input % 10 == 1) result += (int) Math.pow(2, i);
+            input /= 10;
 
+        } //for(i)
         
         return Integer.toString(result);
-    }
+        
+    } //toDenary(int in)
 
 } //Main
