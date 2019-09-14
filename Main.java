@@ -104,19 +104,19 @@ public class Main
         {
             if ((input % 2) >= 1)
             {
-                result += "1";
+                result = "1" + result;
             }
             else if ((input % 2) < 1)
             {
                 
-                result += "0";
+                result = "0" + result;
             }
 
             input /= 2;
 
         }
         
-        return result;
+        return preResult;
     
     } //toBinary(int in)
 
