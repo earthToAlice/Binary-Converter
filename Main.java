@@ -85,9 +85,13 @@ public class Main
 
     static boolean validBinary(int in)
     {
-        for (int i = 0; i < Integer.toString(in).length(); i++)
+        int input = in;
+
+        for (int i = Integer.toString(in).length() - 1; i >= 0; i--)
         {
-            if (((in / ((i+1) * 10)) != 0) && ((in / ((i+1) * 10)) != 1)) return false;
+            System.out.println(input % 10);
+            if ((input % 10 != 0) && (input % 10 != 1)) return false;
+            input /= 10;
 
         } //for(i)
 
@@ -116,14 +120,17 @@ public class Main
 
         }
         
-        return preResult;
+        return result;
     
     } //toBinary(int in)
 
     static String toDenary(int in)
     {
-        //code n shit
-        return "";
+        int result = 0;
+        
+
+        
+        return Integer.toString(result);
     }
 
 } //Main
