@@ -15,7 +15,9 @@ public class Main
 
         String convType = typeToConvertTo(s);
         int input = convPrompt(s, convType);
-        System.out.println(input);
+        String result = (convType.equals("b")) ? toBinary(input) : toDenary(input);
+
+        System.out.println(result);
 
     } //main(String[] args)
 
@@ -92,5 +94,36 @@ public class Main
         return true;
 
     } //validBinary(int in)
+
+    static String toBinary(int in)
+    {
+        float input = in;
+        String result = "";
+
+        while (input >= 1)
+        {
+            if ((input % 2) >= 1)
+            {
+                result += "1";
+            }
+            else if ((input % 2) < 1)
+            {
+                
+                result += "0";
+            }
+
+            input /= 2;
+
+        }
+        
+        return result;
+    
+    } //toBinary(int in)
+
+    static String toDenary(int in)
+    {
+        //code n shit
+        return "";
+    }
 
 } //Main
